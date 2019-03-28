@@ -20,7 +20,7 @@ export default class App {
         this.filterString = (params.get('q') && decodeURIComponent(params.get('q'))) || ''
         this.selectedClusters = new Set((params.get('clusters') || '').split(',').filter(x => x))
         this.seenPods = new Set()
-        
+
         // check localStorage, use the first function as a default option
         const indexSorterFn = ALL_SORTS.findIndex(obj => obj.text === (localStorage.getItem('sorterFn') || ALL_SORTS[0].text))
         this.sorterFn = ALL_SORTS[indexSorterFn].value
@@ -219,7 +219,7 @@ export default class App {
 
             this.viewContainer.x += dx
             this.viewContainer.y += dy
-            // stop any current move animation
+            // stop any current move ation
             this.viewContainerTargetPosition.x = this.viewContainer.x
             this.viewContainerTargetPosition.y = this.viewContainer.y
             prevX = event.clientX
@@ -251,7 +251,7 @@ export default class App {
 
                 this.viewContainer.x += dx
                 this.viewContainer.y += dy
-                // stop any current move animation
+                // stop any current move ation
                 this.viewContainerTargetPosition.x = this.viewContainer.x
                 this.viewContainerTargetPosition.y = this.viewContainer.y
                 prevX = touch.clientX
@@ -400,7 +400,8 @@ export default class App {
         const that = this
         const tick = function (t) {
             // progress goes from 0 to 1
-            const progress = Math.min(1, pod._progress + (0.01 * t))
+            // const progress = Math.min(1, pod._progress + (0.01 * t))
+            const progress = 1
             const scale = 1 + ((1 - progress) * 140)
             pod._progress = progress
             pod.x = targetPosition.x + (distance * cos * (1 - progress))
@@ -434,7 +435,8 @@ export default class App {
         const that = this
         const tick = function (t) {
             // progress goes from 1 to 0
-            const progress = Math.max(0, pod._progress - (0.02 * t))
+            // const progress = Math.max(0, pod._progress - (0.02 * t))
+            const progress = 0
             const scale = 1 + ((1 - progress) * 8)
             pod._progress = progress
             pod.alpha = progress
